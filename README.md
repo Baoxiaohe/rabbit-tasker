@@ -1,4 +1,9 @@
-# 使用
+## 安装
+```
+npm install --save rabbit-tasker
+```
+
+## 使用
 **main.js**
 ```Javascript
 const rabbitTasker = require('rabbit-tasker');
@@ -38,8 +43,8 @@ const rabbitConf = {
 };
 const taskConf = {
   'queue-test': {
-    workerFile: path.resolve('./my_task.js'),
-    workers: 4,
+    workerFile: path.resolve('./my_task.js'), // task file path
+    workers: 4, // workers number
   }
 };
 rabbitTasker.start(rabbitConf, taskConf);
@@ -52,4 +57,38 @@ module.exports = async (msg) => {
   console.log(`working...`)
   msg.ack();
 }
+```
+
+
+## 本地快速启动RabbitMQ
+这里我使用docker安装RabbitMQ：  
+**docker-compose.yml**
+```yaml
+version: "2"
+services:
+  mq:
+    image: rabbitmq:3.7.8-management
+    restart: always
+    mem_limit: 2g
+    hostname: mq1
+    volumes:
+      - ./mnesia:/var/lib/rabbitmq/mnesia
+      - ./log:/var/log/rabbitmq
+      - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+    ports:
+      - "55672:15672"
+      - "56720:5672"
+    environment:
+      - CONTAINER_NAME=rabbitMQ
+      - RABBITMQ_ERLANG_COOKIE=3t182q3wtj1p9z0kd3tb
+```
+**rabbitmq.conf**
+```
+loopback_users.guest = false
+listeners.tcp.default = 5672
+default_pass = zeWqx4dEuFYnIZve
+default_user = test
+hipe_compile = false
+management.listener.port = 15672
+management.listener.ssl = false
 ```
