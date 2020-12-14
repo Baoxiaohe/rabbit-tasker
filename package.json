@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Baoxiaohe/rabbit-tasker#readme",
   "dependencies": {
-    "foo-foo-mq": "^5.0.0"
+    "foo-foo-mq": "^5.0.0",
+    "graceful-process": "^1.2.0"
   }
 }
