@@ -11,7 +11,8 @@
     "url": "git+https://github.com/Baoxiaohe/rabbit-tasker.git"
   },
   "keywords": [
-    "RabbitMQ"
+    "RabbitMQ",
+    "nodejs"
   ],
   "author": "salamander",
   "license": "MIT",
