@@ -6,6 +6,8 @@ npm install --save rabbit-tasker
 ## 使用
 **main.js**
 ```Javascript
+const path = require('path');
+
 const rabbitTasker = require('rabbit-tasker');
 const rabbitConf = {
   connection: {
