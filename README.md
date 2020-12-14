@@ -1,4 +1,5 @@
 # 使用
+**main.js**
 ```Javascript
 const rabbitTasker = require('rabbit-tasker');
 const rabbitConf = {
@@ -42,4 +43,13 @@ const taskConf = {
   }
 };
 rabbitTasker.start(rabbitConf, taskConf);
+```
+**my_task.js**
+```Javascript
+module.exports = async (msg) => {
+  const body = message.body;
+  console.log(`receive msg:`, body);
+  console.log(`working...`)
+  msg.ack();
+}
 ```
