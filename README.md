@@ -34,7 +34,12 @@ const rabbitConf = {
     waitMax: 3000,
   },
   exchanges: [
-    { name: 'exchange-test', type: 'direct', autoDelete: true }
+    { name: 'exchange-test', 
+      type: 'direct', 
+      autoDelete: true, 
+      subscribe: true, 
+      durable: true, 
+    }
   ],
   queues: [
     { name: 'queue-test', autoDelete: true },
