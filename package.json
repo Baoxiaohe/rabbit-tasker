@@ -1,6 +1,6 @@
 {
   "name": "rabbit-tasker",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "workers based on RabbitMQ",
   "main": "index.js",
   "scripts": {
