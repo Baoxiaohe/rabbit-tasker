@@ -36,13 +36,14 @@ const rabbitConf = {
   exchanges: [
     { name: 'exchange-test', 
       type: 'direct', 
-      autoDelete: true, 
-      subscribe: true, 
+      autoDelete: true,
+      durable: true,
+      persistent: true, 
       durable: true, 
     }
   ],
   queues: [
-    { name: 'queue-test', autoDelete: true },
+    { name: 'queue-test', autoDelete: true, subscribe: true, durable: true },
   ],
   bindings: [
     { exchange: 'exchange-test', target: 'queue-test', keys: ['test'] }
@@ -56,6 +57,9 @@ const taskConf = {
 };
 rabbitTasker.start(rabbitConf, taskConf);
 ```
+`rabbitConf` from [here](https://github.com/Foo-Foo-MQ/foo-foo-mq/blob/master/docs/topology.md).
+
+
 **my_task.js**
 ```Javascript
 module.exports = async (msg) => {
