@@ -103,3 +103,7 @@ hipe_compile = false
 management.listener.port = 15672
 management.listener.ssl = false
 ```
+
+
+## 注意
+当消息`content_type`为`application/json`时，消息内容为不合法的JSON时（标准JSON使用双引号），消息内部被消费掉，不会传到业务代码层。
