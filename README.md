@@ -62,11 +62,11 @@ rabbitTasker.start(rabbitConf, taskConf);
 
 **my_task.js**
 ```Javascript
-module.exports = async (msg) => {
+module.exports = async ({message, rabbitClient}) => {
   const body = message.body;
   console.log(`receive msg:`, body);
   console.log(`working...`)
-  msg.ack();
+  message.ack();
 }
 ```
 
